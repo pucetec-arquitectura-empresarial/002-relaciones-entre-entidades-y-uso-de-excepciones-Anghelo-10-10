@@ -7,5 +7,7 @@ class Routes {
         const val SUBJECT = "/subjects"
         const val BASE_PATH = "/api"
         const val ENROLL = "/enroll"
+        const val DELETE = "/delete"
+        const val FIND = "/find"
     }
 }
