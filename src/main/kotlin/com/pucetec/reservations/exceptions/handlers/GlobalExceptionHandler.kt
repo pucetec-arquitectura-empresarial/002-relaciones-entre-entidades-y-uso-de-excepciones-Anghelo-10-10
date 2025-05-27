@@ -2,6 +2,7 @@ package com.pucetec.reservations.exceptions.handlers
 
 import com.pucetec.reservations.exceptions.ProfessorNotFoundException
 import com.pucetec.reservations.exceptions.StudentAlreadyEnrolledException
+import com.pucetec.reservations.exceptions.StudentNotFoundException
 import com.pucetec.reservations.exceptions.SubjectNotFoundException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -22,4 +23,8 @@ class GlobalExceptionHandler {
     @ExceptionHandler(StudentAlreadyEnrolledException::class)
     fun handleStudentAlreadyEnrolled(ex: StudentAlreadyEnrolledException): ResponseEntity<Map<String, String>> =
         ResponseEntity(mapOf("error" to ex.message.orEmpty()), HttpStatus.CONFLICT)
+
+    @ExceptionHandler(StudentNotFoundException::class)
+    fun handleStudentNotFound(ex: StudentNotFoundException): ResponseEntity<Map<String, String>> =
+        ResponseEntity(mapOf("error" to ex.message.orEmpty()), HttpStatus.NOT_FOUND)
 }
